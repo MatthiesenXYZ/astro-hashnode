@@ -5,6 +5,7 @@ import { optionsSchema } from "./schemas/user-config";
 import c from "picocolors";
 import { AstroError } from "astro/errors";
 import { readFileSync } from "node:fs";
+import { squooshImageService } from "astro/config";
 
 /**
  * Astro-Hashnode Integration
@@ -90,7 +91,12 @@ export default defineIntegration({
                     "page-ssr", 
                     `import "${resolve("./styles/tailwind.css")}";`
                 );
+
+                // Update Astro Config
                 updateConfig({
+                    image: {
+                        service: squooshImageService(),
+                    },
                     vite: {
                         css: { transformer: "lightningcss" },
                     }
