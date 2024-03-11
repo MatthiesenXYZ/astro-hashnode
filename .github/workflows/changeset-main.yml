@@ -3,9 +3,11 @@ on:
   push:
     branches:
       - main
+      
 permissions:
   pull-requests: write
   contents: write
+  
 env:
   CI: true
 jobs:
