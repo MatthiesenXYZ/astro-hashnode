@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-hashnode
 
+## 0.1.1
+
+### Patch Changes
+
+- d86777f: adds exports for HashnodeAPI, as well as components so users can import the pre-built components for their own layout
+
 ## 0.1.0
 
 ### Minor Changes
