@@ -1,0 +1,35 @@
+{
+  "name": "PACKAGE-NAME",
+  "version": "0.0.0",
+  "description": "DESCRIPTION",
+  "author": {
+    "email": "adam@matthiesen.xyz",
+    "name": "Adam Matthiesen",
+    "url": "https://matthiesen.xyz"
+  },
+  "license": "MIT",
+  "keywords": [
+    "astro-integration",
+    "astro-component",
+    "withastro",
+    "astro",
+    "commercejs"
+  ],
+  "homepage": "https://github.com/adammatthiesen/astro-commercejs",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "files": ["src"],
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {},
+  "type": "module",
+  "peerDependencies": {
+    "astro": ">=4.4.1"
+  },
+  "dependencies": {
+    "astro-integration-kit": "^0.5.1"
+  }
+}
