@@ -24,7 +24,7 @@ importers:
         specifier: '>=4.4.1'
         version: 4.4.15(@types/node@20.11.25)(typescript@5.4.2)
       astro-font:
-        specifier: 0.0.77
+        specifier: ^0.0.77
         version: 0.0.77
       astro-integration-kit:
         specifier: ^0.5.1
@@ -42,7 +42,7 @@ importers:
         specifier: ^6.1.0
         version: 6.1.0(graphql@16.8.1)
       picocolors:
-        specifier: 1.0.0
+        specifier: ^1.0.0
         version: 1.0.0
       tailwindcss:
         specifier: 4.0.0-alpha.7
