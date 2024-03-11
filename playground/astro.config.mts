@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, squooshImageService } from "astro/config";
 import astroHashnode from "@matthiesenxyz/astro-hashnode";
 
 // https://astro.build/config
@@ -9,4 +9,7 @@ export default defineConfig({
 			verbose: true,
 		})
 	],
+	image: {
+		service: squooshImageService(),
+	}
 });
