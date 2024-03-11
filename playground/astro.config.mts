@@ -9,7 +9,4 @@ export default defineConfig({
 			verbose: true,
 		})
 	],
-	image: {
-		service: squooshImageService(),
-	}
 });
