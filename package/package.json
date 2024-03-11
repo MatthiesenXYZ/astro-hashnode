@@ -1,12 +1,12 @@
 {
   "name": "@matthiesenxyz/astro-hashnode",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "An Integration to bring your Hashnode Headless Blog content into Astro!",
   "author": {
     "email": "adam@matthiesen.xyz",
     "name": "Adam Matthiesen",
     "url": "https://matthiesen.xyz"
-  }, 
+  },
   "license": "MIT",
   "keywords": [
     "astro-integration",
@@ -26,7 +26,9 @@
     "access": "public"
   },
   "sideEffects": false,
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "exports": {
     ".": "./src/index.ts"
   },
