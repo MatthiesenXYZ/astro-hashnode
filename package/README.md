@@ -1,21 +1,21 @@
-# PACKAGE-NAME
+# Astro Hashnode
 
-DESCRIPTION
+An Integration to bring your Hashnode Headless Blog content into Astro!
 
 ## Installation
 
 Install the integration **automatically** using the Astro CLI:
 
 ```bash
-pnpm astro add PACKAGE-NAME
+pnpm astro add @matthiesenxyz/astro-hashnode
 ```
 
 ```bash
-npm astro add PACKAGE-NAME
+npm astro add @matthiesenxyz/astro-hashnode
 ```
 
 ```bash
-yarn astro add PACKAGE-NAME
+yarn astro add @matthiesenxyz/astro-hashnode
 ```
 
 Or install it **manually**:
@@ -23,53 +23,43 @@ Or install it **manually**:
 1. Install the required dependencies
 
 ```bash
-pnpm add PACKAGE-NAME
+pnpm add @matthiesenxyz/astro-hashnode
 ```
 
 ```bash
-npm install PACKAGE-NAME
+npm install @matthiesenxyz/astro-hashnode
 ```
 
 ```bash
-yarn add PACKAGE-NAME
+yarn add @matthiesenxyz/astro-hashnode
 ```
 
 2. Add the integration to your astro config
 
 ```diff
-+import PACKAGE-NAME from "PACKAGE-NAME";
++import astroHashnode from "@matthiesenxyz/astro-hashnode";
 
 export default defineConfig({
   integrations: [
-+    PACKAGE-NAME(),
++   astroHashnode({
++      hashnodeURL: 'astroplayground.hashnode.dev'
+    }),
   ],
 });
 ```
 
-## Basic Usage
+## Full Configuration Options
 
-
-
-## Contributing
-
-This package is structured as a monorepo:
-
-- `playground` contains code for testing the package
-- `package` contains the actual package
-
-Install dependencies using pnpm: 
-
-```bash
-pnpm i --frozen-lockfile
+```ts
+astroHashnode({
+  hashnodeURL: 'astroplayground.hashnode.dev', // Your hashnode URL
+  landingPage: true, // Lets you disable the default landing page!
+  layoutComponent: './src/layouts/YourLayout.astro' // Lets you change the default Layout.astro being used by the Integration Pages.
+  verbose: false // Change to Verbose console output
+})
 ```
 
-Start the playground:
-
-```bash
-pnpm playground:dev
-```
-
-You can now edit files in `package`. Please note that making changes to those files may require restarting the playground dev server.
+Node: This Integration uses the new Tailwind v4  There is no config options in this version of tailwindCSS,  and applyBaseStyles is enabled!  So if you are building your own LayoutComponent feel free to use TailwindCSS!
 
 ## Licensing
 
@@ -77,4 +67,9 @@ You can now edit files in `package`. Please note that making changes to those fi
 
 ## Acknowledgements
 
-TODO:
+- [`astro-integration-kit`](https://github.com/florian-lefebvre/astro-integration-kit) by Florian
+- [`Hashnode - HeadlessCMS`](https://hashnode.com/headless) by the Hashnode
+- [`TailwindCSS v4`](https://tailwindcss.com/blog/tailwindcss-v4-alpha) by the TailwindCSS team
+- [`Astro-Font`](https://github.com/rishi-raj-jain/astro-font) by Rishi
+- [`Astro-SEO`](https://github.com/jonasmerlin/astro-seo) by Jonas
+- [`Astro-Remote`](https://github.com/natemoo-re/astro-remote) by Nate

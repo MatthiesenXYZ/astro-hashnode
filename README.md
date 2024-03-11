@@ -1,8 +1,29 @@
-# PACKAGE-NAME
+# Astro Hashnode
 
-DESCRIPTION
+An Integration to bring your Hashnode Headless Blog content into Astro!
 
 To see how to get started, check out the [package README](./package/README.md)
+
+## Contributing
+
+This package is structured as a monorepo:
+
+- `playground` contains code for testing the package
+- `package` contains the actual package
+
+Install dependencies using pnpm: 
+
+```bash
+pnpm i --frozen-lockfile
+```
+
+Start the playground:
+
+```bash
+pnpm playground:dev
+```
+
+You can now edit files in `package`. Please note that making changes to those files may require restarting the playground dev server.
 
 ## Licensing
 

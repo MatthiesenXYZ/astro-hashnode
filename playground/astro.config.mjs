@@ -1,7 +1,12 @@
 import { defineConfig } from "astro/config";
-import packagename from "@adammatthiesen/astro-commercejs";
+import astroHashnode from "@matthiesenxyz/astro-hashnode";
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [packagename()],
+	integrations: [
+		astroHashnode({
+			hashnodeURL: "astroplayground.hashnode.dev",
+			verbose: true,
+		})
+	],
 });

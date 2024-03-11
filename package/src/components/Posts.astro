@@ -1,0 +1,14 @@
+---
+import PostCard from './PostCard.astro';
+import type { AllPostsGenerated } from '../hn-gql'
+
+interface Props{
+  allPosts: AllPostsGenerated[]
+}
+
+const { allPosts } = Astro.props;
+---
+
+<div>
+  {allPosts.map((post: AllPostsGenerated) => <PostCard post={post.node} />)}
+</div>

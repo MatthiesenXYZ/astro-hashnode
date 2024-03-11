@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import { getAboutPage, getPublication } from "../hn-gql"
+
+const publication = await getPublication();
+const aboutPageData = await getAboutPage();
+
+const baseURL = import.meta.env.BASE_URL;
+
+---
+<header class="flex bg-blue-200 w-full p-3">
+  <h1 class="text-2xl">
+    <a href={baseURL}>
+      { publication.preferences.logo ? 
+      <Image 
+        src={publication.preferences.logo} 
+        height={32} 
+        width={150}
+        class="inline" 
+        alt={publication.title} 
+        loading="eager" 
+      /> : 
+      <>
+      { publication.favicon && <Image 
+        src={publication.favicon} 
+        height={32} 
+        width={32} 
+        class="inline"
+        alt={publication.title} 
+        loading="eager" 
+      /> } 
+      {publication.title} 
+      </> }
+      
+    </a>
+  </h1>
+  <div class="ml-5 pt-0.5 text-lg">
+    <a class="mr-3" href={baseURL}>Home</a>
+    <a class="mr-3" href={`${baseURL}blog`}>Blog</a>
+    {aboutPageData && <a href={`${baseURL}blog/about/`}>About</a>}
+  </div>
+</header>

@@ -1,0 +1,36 @@
+---
+import { getPublication } from "../hn-gql"
+import Social from './Social.astro';
+
+const pub = await getPublication();
+
+const { links, preferences } = pub;
+
+const { disableFooterBranding } = preferences;
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class=" mt-3 flex flex-col items-center justify-center bg-blue-200 p-1">
+  <div class="mt-1">
+    <center>
+      <p class="text-sm text-gray-400 p-2">
+        © {currentYear} {pub.title}. All rights reserved.
+      </p>
+      {!disableFooterBranding && (<p class="text-sm text-gray-400 p-2">
+        Made with ❤️ and passion using Headless Hashnode and Astro.
+      </p>)}
+    </center>
+  </div>
+  <div class="mt-3 flex">
+    {links.dailydev && <Social url={links.dailydev} displayName="DailyDev" />}
+    {links.github && <Social url={links.github} displayName="Github" />}
+    {links.hashnode && <Social url={links.hashnode} displayName="Hashnode" />}
+    {links.twitter && <Social url={links.twitter} displayName="Twitter" />}
+    {links.instagram && <Social url={links.instagram} displayName="Instagram" />}
+    {links.website && <Social url={links.website} displayName="Website" />}
+    {links.youtube && <Social url={links.youtube} displayName="Youtube" />}
+    {links.linkedin && <Social url={links.linkedin} displayName="Linkedin" />}
+    {links.mastodon && <Social url={links.mastodon} displayName="Mastodon" />}
+  </div>
+</footer>

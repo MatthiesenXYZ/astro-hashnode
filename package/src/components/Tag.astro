@@ -1,0 +1,15 @@
+---
+interface Props {
+  tag: {
+    name?: string;
+    slug?: string;
+  }
+};
+
+const baseURL = import.meta.env.BASE_URL;
+const { tag } = Astro.props;
+---
+
+<div class="m-1 bg-purple-500 text-white rounded-md p-1 text-sm">
+  <a href={`${baseURL}blog/tags/${tag.slug}`}>{tag.name}</a>
+</div>

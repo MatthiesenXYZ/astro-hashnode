@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+    src: string;
+    alt: string;
+}
+
+const { 
+    alt = "No Alt Text", 
+    src, 
+    ...rest
+} = Astro.props;
+
+---
+<Image 
+    class="rounded-lg" 
+    src={src} 
+    alt={alt} 
+    inferSize={true} 
+    loading="lazy"
+    {...rest}
+/>

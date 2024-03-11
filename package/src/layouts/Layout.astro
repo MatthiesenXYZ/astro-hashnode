@@ -1,0 +1,67 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import { getPublication } from '../hn-gql'
+import { SEO } from "astro-seo";
+import { AstroFont } from "astro-font";
+import type { AstroHashnodeLayoutProps } from '../proptypes/layouttypes'
+
+const pubData = await getPublication();
+
+const pubHeader = pubData.title;
+
+const { pageTitle, hideFooter, hideHeader, ogImage } = Astro.props as AstroHashnodeLayoutProps;
+---
+<html lang="en">
+  <head>
+    <AstroFont
+      config={[
+        {
+          src: [],
+          name: "Poppins",
+          googleFontsURL: 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400;1,700&display=swap',
+          preload: true,
+          display: "swap",
+          selector: "body",
+          cssVariable: "astro-font",
+          fallback: "sans-serif",
+        },
+      ]}
+    />
+    <SEO 
+      title={pageTitle ? pageTitle + " | " + pubHeader : pubHeader}
+      description={pubData.descriptionSEO}
+      charset='utf-8'
+      openGraph={{
+        basic: {
+          title: pageTitle ? pageTitle + " | " + pubHeader : pubHeader,
+          type: 'text',
+          image: ogImage || pubData.favicon,
+        },
+        optional: {
+          description: pubData.descriptionSEO,
+          siteName: pubHeader,
+        }
+      }}
+      extend={{
+        link: [
+          { rel: 'icon', type: 'image/svg+xml', href: pubData.favicon },
+        ],
+        meta: [
+          { name: 'viewport', content: "width=device-width, initial-scale=1" },
+          { name: 'generator', content: Astro.generator },
+        ]
+      }}
+    />
+  </head>
+  <body>
+    <div class="flex flex-col">
+      {!hideHeader && <Header />}
+      <div class="flex flex-wrap flex-col mt-0 mr-auto mb-0 ml-auto lg:w-[60%]">
+        <slot />
+      </div>
+      {!hideFooter && <Footer />}
+    </div>
+  </body>
+</html>

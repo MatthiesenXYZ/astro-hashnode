@@ -1,0 +1,14 @@
+---
+interface Props {
+  url: string;
+  displayName: string;
+}
+
+const { url, displayName } = Astro.props;
+---
+<a
+  class="p-1 rounded-lg text-md mr-2 bg-purple-800 text-white"
+  href={url}
+  target="_blank">
+  {displayName}
+</a>

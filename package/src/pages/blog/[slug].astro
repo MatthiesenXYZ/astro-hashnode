@@ -1,0 +1,50 @@
+---
+import { Layout } from "virtual:astro-hashnode/components";
+import { getAllPosts, getPost } from '../../hn-gql';
+import Tag from '../../components/Tag.astro';
+import Author from '../../components/Author.astro';
+import { Markup } from 'astro-remote';
+import { Image } from 'astro:assets';
+import RemoteImage from '../../components/astro-remote/RemoteImage.astro';
+
+export async function getStaticPaths() {
+  const data = await getAllPosts();
+  const allPosts = data.publication.posts.edges;
+  return allPosts.map((post) => {
+    return {
+      params: { slug: post.node.slug },
+    }
+  })
+}
+const { slug } = Astro.params;
+const post = await getPost(slug);
+---
+<Layout pageTitle={post.title} ogImage={post.coverImage.url}>
+  <article class="bg-white p-3 mt-3 flex flex-col">
+    <Image 
+      class="rounded-lg" 
+      src={post.coverImage.url} 
+      alt={post.title} 
+      inferSize={true} 
+      loading="eager"
+    />
+    <h1 class="text-4xl font-bold pt-5">{post.title}</h1>
+    <h2 class="text-xl pt-3 pb-3" aria-label="CoverPhoto Subtitle">{post.subtitle}</h2>
+
+    <Author post={post} />
+    
+    <div class="flex flex-wrap justify-center items-center mt-5 mb-5">
+      {post.tags && post.tags.map((tag) => <Tag tag={tag} />)}
+    </div>
+    
+    <div class="post-details">
+      <Markup 
+        content={post.content.html} 
+        components={{
+          img: RemoteImage
+        }}
+      />
+
+    </div>
+  </article>
+</Layout>

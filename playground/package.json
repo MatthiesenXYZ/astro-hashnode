@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "astro": "^4.3.5",
-    "PACKAGE-NAME": "workspace:*"
+    "@matthiesenxyz/astro-hashnode": "workspace:*"
   },
   "devDependencies": {
     "@astrojs/check": "^0.5.1",

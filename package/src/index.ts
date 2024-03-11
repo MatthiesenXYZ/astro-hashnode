@@ -1,3 +1,3 @@
-import integration from "./integration.js";
+import astroHashnode from "./astro-hashnode.js";
 
-export default integration;
+export default astroHashnode;

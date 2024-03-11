@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets"
+import { Layout } from "virtual:astro-hashnode/components";
+import background from "../assets/blog.jpg";
+---
+
+<Layout pageTitle="Home" hideFooter hideHeader>
+	<div class="flex relative flex-col justify-center items-center h-screen">
+		<Image
+			class="w-full h-screen bg-center bg-cover blur-sm"
+			alt="Background"
+			src={background}
+			height={1080}
+			width={1920}
+			loading="eager"
+		/>
+		<div class="absolute p-2 flex flex-col justify-center items-center z-10 bg-purple-50 lg:w-2/5 h-1/4 rounded-md">
+			<div class="flex pb-5 mb-5 text-5xl text-purple-800">
+				<p>Hashnode Blog</p>
+			</div>
+		<div>
+			<a href="/blog"	class="bg-purple-700 text-white hover:bg-purple-900 p-3 rounded-sm text-lg text mr-2">
+				TAKE ME TO THE BLOG
+			</a>
+		</div>
+	</div>
+</Layout>
