@@ -73,3 +73,4 @@ Node: This Integration uses the new Tailwind v4  There is no config options in t
 - [`Astro-Font`](https://github.com/rishi-raj-jain/astro-font) by Rishi
 - [`Astro-SEO`](https://github.com/jonasmerlin/astro-seo) by Jonas
 - [`Astro-Remote`](https://github.com/natemoo-re/astro-remote) by Nate
+
