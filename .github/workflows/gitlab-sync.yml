@@ -1,8 +1,10 @@
-name: "Sync: GitHub => GitLab"
+name: "Sync to GitLab"
 
 on:
   - push
   - delete
+
+permissions: read-all
 
 jobs:
   sync:
