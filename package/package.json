@@ -6,7 +6,7 @@
     "email": "adam@matthiesen.xyz",
     "name": "Adam Matthiesen",
     "url": "https://matthiesen.xyz"
-  },
+  }, 
   "license": "MIT",
   "keywords": [
     "astro-integration",
