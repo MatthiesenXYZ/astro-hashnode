@@ -21,7 +21,7 @@ importers:
         specifier: 4.0.0-alpha.8
         version: 4.0.0-alpha.8
       astro:
-        specifier: ^4.4.1
+        specifier: '>=4.4.1'
         version: 4.5.2(@types/node@20.11.26)(typescript@5.4.2)
       astro-font:
         specifier: ^0.0.77
