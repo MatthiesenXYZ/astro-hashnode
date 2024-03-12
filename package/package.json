@@ -37,7 +37,7 @@
   "scripts": {},
   "type": "module",
   "peerDependencies": {
-    "astro": "^4.4.1"
+    "astro": ">=4.4.1"
   },
   "devDependencies": {
     "vite": "^5.1.5"
