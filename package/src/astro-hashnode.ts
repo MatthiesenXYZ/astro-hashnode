@@ -69,8 +69,7 @@ export default defineIntegration({
 
                 hashLog("Setting up Virtual Imports and Layout Component")
                 // Setup Layout Component
-                // biome-ignore lint/suspicious/noImplicitAnyLet: This is a false positive
-                let layoutComponentPath
+                let layoutComponentPath: string;
 
                 if (options.layoutComponent) {
                     layoutComponentPath = rootResolve(options.layoutComponent)

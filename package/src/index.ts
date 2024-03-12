@@ -1,3 +1,3 @@
-import astroHashnode from "./astro-hashnode.js";
+import astroHashnode from "./astro-hashnode";
 
 export default astroHashnode;

@@ -1,6 +1,6 @@
 declare module 'virtual:astro-hashnode/config' {
-    const userConfig: import("./src/schemas/user-config").Options;
-     export default config as userConfig;
+    const Config: import("./src/schemas/user-config").Options;
+     export default config as Config;
 }
 
 declare module 'virtual:astro-hashnode/components' {

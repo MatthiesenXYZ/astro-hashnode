@@ -1,6 +1,6 @@
 import { gql, GraphQLClient } from "graphql-request";
 import type { AllPostsData, PostOrPageData, PublicationData } from "./schema";
-import Config from "virtual:astro-hashnode/config";
+import config from "virtual:astro-hashnode/config";
 
 export const getClient = () => { 
   return new GraphQLClient("https://gql.hashnode.com") 
@@ -12,7 +12,7 @@ export const getAllPosts = async () => {
   const allPosts = await client.request<AllPostsData>(
     gql`
       query allPosts {
-        publication(host: "${Config.hashnodeURL}") {
+        publication(host: "${config.hashnodeURL}") {
           title
           posts(first: 20) {
             pageInfo{
@@ -56,7 +56,7 @@ export const getPost = async (slug: string) => {
   const data = await client.request<PostOrPageData>(
     gql`
       query postDetails($slug: String!) {
-        publication(host: "${Config.hashnodeURL}") {
+        publication(host: "${config.hashnodeURL}") {
           post(slug: $slug) {
             author{
               name
@@ -92,7 +92,7 @@ export const getAboutPage = async () => {
   const page = await client.request<PostOrPageData>(
     gql`
       query pageData {
-        publication(host: "${Config.hashnodeURL}") {
+        publication(host: "${config.hashnodeURL}") {
           staticPage(slug: "about") {
             title
             content {
@@ -114,7 +114,7 @@ export const getPublication = async () => {
   const data = await client.request<PublicationData>(
     gql`
       query pubData {
-        publication(host: "${Config.hashnodeURL}") {
+        publication(host: "${config.hashnodeURL}") {
           title
           displayTitle
           descriptionSEO
