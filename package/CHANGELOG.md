@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-hashnode
 
+## 0.1.3
+
+### Patch Changes
+
+- fc94343: This updates internal `AIK` as well as impliments ViewTransitions with a disable switch in the user config
+
 ## 0.1.2
 
 ### Patch Changes
