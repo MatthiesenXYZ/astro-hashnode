@@ -1,25 +1,24 @@
 ---
 import { Layout } from "virtual:astro-hashnode/components";
-import { getAllPosts, getPost } from '../../hn-gql';
+import { getPost } from '../../hn-gql';
 import Tag from '../../components/Tag.astro';
 import Author from '../../components/Author.astro';
 import { Markup } from 'astro-remote';
 import { Image } from 'astro:assets';
 import RemoteImage from '../../components/astro-remote/RemoteImage.astro';
 
-export async function getStaticPaths() {
-  const data = await getAllPosts();
-  const allPosts = data.publication.posts.edges;
-  return allPosts.map((post) => {
-    return {
-      params: { slug: post.node.slug },
-    }
-  })
-}
 const { slug } = Astro.params;
-const post = await getPost(slug);
 
+const checkSlug = (slug:string|undefined) => {
+  if (slug !== undefined) {
+    return slug as string;
+  }
+  return " " as string;
+}
+
+const post = await getPost(checkSlug(slug));
 ---
+{post ? (
 <Layout pageTitle={post.title} ogImage={post.coverImage.url}>
   <article class="bg-white p-3 mt-3 flex flex-col">
     <Image 
@@ -48,4 +47,11 @@ const post = await getPost(slug);
 
     </div>
   </article>
-</Layout>
+</Layout>) : (
+  <Layout pageTitle="404">
+    <div class="text-center my-20">
+      <h1 class="text-4xl font-bold">404</h1>
+      <p>Post not found</p>
+    </div>
+  </Layout>
+)}

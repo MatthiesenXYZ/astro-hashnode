@@ -15,6 +15,7 @@ export default defineIntegration({
     optionsSchema,
     plugins: [ ...corePlugins, addDtsPlugin ],
     setup({ options }) {
+        type outputType = "static" | "hybrid" | "server";
 
         return {
             "astro:config:setup": ({ 
@@ -50,6 +51,13 @@ export default defineIntegration({
                     throw new AstroError(message)
                 }
 
+                // Check if output is static or hybrid
+                const checkIfStatic = (output: outputType) => {
+                    if (output === "static") { return true }
+                    if (output === "hybrid") { return true }
+                    return false
+                }
+
                 hashLogNoVerbose("Setting up Astro-Hashnode Integration")
 
                 // Check for Hashnode URL
@@ -62,7 +70,7 @@ export default defineIntegration({
                 hashLog("Setting up Virtual Imports and Layout Component")
                 // Setup Layout Component
                 // biome-ignore lint/suspicious/noImplicitAnyLet: This is a false positive
-                let  layoutComponentPath
+                let layoutComponentPath
 
                 if (options.layoutComponent) {
                     layoutComponentPath = rootResolve(options.layoutComponent)
@@ -81,8 +89,8 @@ export default defineIntegration({
                     content: readFileSync(resolve("./definitions/astro-hashnode.d.ts"), "utf-8"),
                 })
 
-                hashLog("Setting up 'Tailwind CSS v4' Integration")
                 // Add & Setup Tailwind CSS
+                hashLog("Setting up 'Tailwind CSS v4' Integration")
                 const twplugin = tailwindcss();
                 for (const twp of twplugin) {
                     addVitePlugin(twp);
@@ -102,21 +110,18 @@ export default defineIntegration({
                     }
                 })
 
-                hashLog("Setting up Page Routes")
                 // Add Page Routes
+                hashLog("Setting up Page Routes")
                 if (options.landingPage) {
                     injectRoute({
                         pattern: config.base,
                         entrypoint: resolve("./pages/index.astro"),
+                        prerender: true,
                     });
                 }
                 injectRoute({
                     pattern: `${config.base}blog`,
                     entrypoint: resolve("./pages/blog/index.astro"),
-                })
-                injectRoute({
-                    pattern: `${config.base}blog/[slug]`,
-                    entrypoint: resolve("./pages/blog/[slug].astro"),
                 })
                 injectRoute({
                     pattern: `${config.base}blog/about`,
@@ -125,7 +130,26 @@ export default defineIntegration({
                 injectRoute({
                     pattern: `${config.base}blog/tags/[tag]`,
                     entrypoint: resolve("./pages/blog/tags/[tag].astro"),
+                    prerender: true,
                 })
+
+                // Add Blog Post Routes based on output type
+                if ( checkIfStatic(config.output) ) {
+                    // Static & Hybrid Routes
+                    injectRoute({
+                        pattern: `${config.base}blog/[slug]`,
+                        entrypoint: resolve("./pages/blog/[slug].astro"),
+                        prerender: true,
+                    })
+                } else {
+                    // Server Routes
+                    injectRoute({
+                        pattern: `${config.base}blog/[slug]`,
+                        entrypoint: resolve("./pages/ssr-pages/[slug].astro"),
+                    })
+                }
+
+
             },
             "astro:config:done":  ({ logger }) => {
                 const HashLogger = logger.fork(c.bold(c.blue("Astro-Hashnode")));
