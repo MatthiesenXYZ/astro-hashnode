@@ -1,6 +1,6 @@
 {
   "name": "@matthiesenxyz/astro-hashnode",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "An Integration to bring your Hashnode Headless Blog content into Astro!",
   "author": {
     "email": "adam@matthiesen.xyz",
