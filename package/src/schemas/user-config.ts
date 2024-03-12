@@ -16,11 +16,11 @@ export const optionsSchema = z.object({
 	 */
 	landingPage: z.boolean().default(true),
 	/**
-	 * Allows the user to disable the Astro ViewTransitions component.
-	 * @default false
+	 * Allows the user to enable/disable the Astro ViewTransitions component.
+	 * @default true
 	 * @see https://docs.astro.build/en/guides/view-transitions/ for more information about ViewTransitions
 	 */
-	disableViewTransitions: z.boolean().default(false),
+	useViewTransitions: z.boolean().default(true),
 	/**
 	 * Allows the user to change the layout component used for Astro-Hashnode pages.
 	 */

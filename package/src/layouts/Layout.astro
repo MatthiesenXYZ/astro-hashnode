@@ -9,7 +9,7 @@ import type { AstroHashnodeLayoutProps } from '../proptypes/layouttypes'
 import { ViewTransitions } from 'astro:transitions';
 import config from "virtual:astro-hashnode/config";
 
-const useTranstions:boolean = !config.disableViewTransitions;
+const useTranstions = config.useViewTransitions;
 
 const pubData = await getPublication();
 

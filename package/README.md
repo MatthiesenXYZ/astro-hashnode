@@ -54,7 +54,7 @@ export default defineConfig({
 astroHashnode({
   hashnodeURL: 'astroplayground.hashnode.dev', // Your hashnode URL
   landingPage: true, // Lets you disable the default landing page!
-  disableViewTransitions: false, // Lets you disable the Default included ViewTransitions.
+  useViewTransitions: true, // Lets you enable/disable the default included ViewTransitions.
   layoutComponent: './src/layouts/YourLayout.astro' // Lets you change the default Layout.astro being used by the Integration Pages.
   verbose: false // Change to Verbose console output
 })
