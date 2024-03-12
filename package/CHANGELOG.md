@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-hashnode
 
+## 0.1.2
+
+### Patch Changes
+
+- 7733762: Add SSR support for blog posts (Tags are still prerendered)
+
 ## 0.1.1
 
 ### Patch Changes
