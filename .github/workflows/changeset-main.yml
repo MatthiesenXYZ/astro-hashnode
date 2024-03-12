@@ -1,5 +1,6 @@
 name: "Changesets: Publish Packages from main"
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
