@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-hashnode
 
+## 0.1.4
+
+### Patch Changes
+
+- 337a5b0: added new keyword "cms" and updated Dependencies
+
 ## 0.1.3
 
 ### Patch Changes
