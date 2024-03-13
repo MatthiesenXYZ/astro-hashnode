@@ -27,7 +27,7 @@ importers:
         specifier: ^0.0.77
         version: 0.0.77
       astro-integration-kit:
-        specifier: ^0.6.0
+        specifier: 0.6.0
         version: 0.6.0(astro@4.5.2)
       astro-remote:
         specifier: ^0.3.2
