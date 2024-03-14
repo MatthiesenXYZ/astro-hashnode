@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-hashnode
 
+## 0.1.5
+
+### Patch Changes
+
+- 784cb63: view transition updates
+
 ## 0.1.4
 
 ### Patch Changes
