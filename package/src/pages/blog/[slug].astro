@@ -28,11 +28,12 @@ const post = await getPost(slug);
       alt={post.title} 
       inferSize={true} 
       loading="eager"
+      transition:name={'hero:' + post.coverImage.url}
     />
     <h1 class="text-4xl font-bold pt-5">{post.title}</h1>
     <h2 class="text-xl pt-3 pb-3" aria-label="CoverPhoto Subtitle">{post.subtitle}</h2>
 
-    <Author post={post} />
+    <Author post={post}/>
     
     <div class="flex flex-wrap justify-center items-center mt-5 mb-5">
       {post.tags && post.tags.map((tag) => <Tag tag={tag} />)}

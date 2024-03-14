@@ -7,6 +7,27 @@ const aboutPageData = await getAboutPage();
 
 const baseURL = import.meta.env.BASE_URL;
 
+const pathname = new URL(Astro.request.url).pathname;
+
+// remove leading and trailing slash
+const removeTrailingAndLeadingSlash = (str:string) => {
+  // define checked string as the original string
+  let checkedStr = str;
+
+  // remove leading slash
+  if (str.startsWith("/")) {
+    checkedStr = str.slice(1);
+  }
+  // remove trailing slash
+  if (str.endsWith("/")) {
+    checkedStr = str.slice(0, -1);
+  }
+  // return checked string
+  return checkedStr;
+}
+
+const currentPath = removeTrailingAndLeadingSlash(pathname);
+
 ---
 <header class="flex bg-blue-200 w-full p-3">
   <h1 class="text-2xl">
@@ -35,8 +56,22 @@ const baseURL = import.meta.env.BASE_URL;
     </a>
   </h1>
   <div class="ml-5 pt-0.5 text-lg">
-    <a class="mr-3" href={baseURL}>Home</a>
-    <a class="mr-3" href={`${baseURL}blog`}>Blog</a>
-    {aboutPageData && <a href={`${baseURL}blog/about/`}>About</a>}
+    <a 
+      class=`mr-3 ${currentPath === "" ? "font-bold" : ""}` 
+      href={baseURL}
+      >Home
+    </a>
+    <a 
+      class=`mr-3 ${currentPath === "blog" ? "font-bold" : ""}` 
+      href={`${baseURL}blog`}
+      >Blog
+    </a>
+    { aboutPageData && ( 
+      <a 
+        class=`mr-3 ${currentPath === "blog/about" ? "font-bold" : ""}`
+        href={`${baseURL}blog/about`}
+        >About
+      </a>
+       ) }
   </div>
 </header>

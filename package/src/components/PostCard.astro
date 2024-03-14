@@ -26,6 +26,7 @@ const p = await getPost(post.slug);
         src={p.coverImage.url} 
         alt={post.title} 
         inferSize={true} 
+        transition:name={'hero:' + p.coverImage.url}
       />
       <div class="flex flex-col m-4">
         <p class="mb-2 text-lg">{post.brief}</p>

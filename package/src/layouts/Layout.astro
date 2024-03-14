@@ -62,7 +62,7 @@ const { pageTitle, hideFooter, hideHeader, ogImage } = Astro.props as AstroHashn
   </head>
   <body>
     <div class="flex flex-col">
-      {!hideHeader && <Header />}
+      {!hideHeader && <Header transition:animate="none" />}
       <div class="flex flex-wrap flex-col mt-0 mr-auto mb-0 ml-auto lg:w-[60%]">
         <slot />
       </div>
