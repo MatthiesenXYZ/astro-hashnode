@@ -10,7 +10,7 @@ const allPosts = data.publication.posts.edges;
 ---
 <Layout pageTitle="Blog">
 	<div class="flex flex-col justify-center items-center p-2">
-		<h2 class="text-2xl pt-2 font-semibold">{`Welcome to ${pub.displayTitle || pub.title}`}</h2>
+		<h2 transition:animate={'fade'} transition:name={'banner'} class="text-2xl pt-2 font-semibold">{`Welcome to ${pub.displayTitle || pub.title}`}</h2>
 		<Posts allPosts={allPosts}/>
 
 	</div>

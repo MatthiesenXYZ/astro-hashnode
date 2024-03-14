@@ -20,16 +20,24 @@ const { post } = Astro.props;
         height={50}
         class="rounded-3xl mr-3" 
         loading="eager"
+        transition:animate={"fade"} 
+        transition:name={'author:' + post.author.profilePicture}
       />
       <div class="mt-3 flex">  
-        <span>{post.author.name}</span>
+        <span transition:animate={"fade"} 
+        transition:name={'author:' + post.author.name} 
+        >{post.author.name}</span>
         <span class="mx-3 block font-bold text-slate-500">.</span>
       </div>
     </div>
   </div>
-  <div class="mb-5 flex w-full flex-row items-center justify-center md:mb-0 md:w-auto md:justify-start">
-    <span>{getFormattedDate(post.publishedAt)}</span>
+  <div class="mb-5 flex w-full flex-row items-center justify-center md:mb-0 md:w-auto md:justify-start" >
+    <span transition:animate={"fade"} 
+    transition:name={'hero:' + post.publishedAt}
+    >{getFormattedDate(post.publishedAt)}</span>
     <span class="mx-3 block font-bold text-slate-500">.</span>
-    <span>{post.readTimeInMinutes} min read</span>
+    <span transition:animate={"fade"} 
+    transition:name={'hero:' + post.readTimeInMinutes}
+    >{post.readTimeInMinutes} min read</span>
   </div>
 </div>

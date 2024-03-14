@@ -27,6 +27,7 @@ const post = await getPost(checkSlug(slug));
       alt={post.title} 
       inferSize={true} 
       loading="eager"
+      transition:name={'hero:' + post.coverImage.url}
     />
     <h1 class="text-4xl font-bold pt-5">{post.title}</h1>
     <h2 class="text-xl pt-3 pb-3" aria-label="CoverPhoto Subtitle">{post.subtitle}</h2>

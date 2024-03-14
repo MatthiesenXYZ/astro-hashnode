@@ -13,8 +13,14 @@ import background from "../assets/blog.jpg";
 			height={1080}
 			width={1920}
 			loading="eager"
+			transition:name={'background:' + background}
+			transition:animate={'fade'}
 		/>
-		<div class="absolute p-2 flex flex-col justify-center items-center z-10 bg-purple-50 lg:w-2/5 h-1/4 rounded-md">
+		<div 
+			class="absolute p-2 flex flex-col justify-center items-center z-10 bg-purple-50 lg:w-2/5 h-1/4 rounded-md"
+			transition:name={'banner'}
+			transition:animate={'fade'}
+		>
 			<div class="flex pb-5 mb-5 text-5xl text-purple-800">
 				<p>Hashnode Blog</p>
 			</div>
