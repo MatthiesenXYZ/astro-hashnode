@@ -11,7 +11,7 @@ pnpm astro add @matthiesenxyz/astro-hashnode
 ```
 
 ```bash
-npm astro add @matthiesenxyz/astro-hashnode
+npm run astro add @matthiesenxyz/astro-hashnode
 ```
 
 ```bash
