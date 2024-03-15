@@ -1,5 +1,12 @@
 # @matthiesenxyz/astro-hashnode
 
+## 0.1.6
+
+### Patch Changes
+
+- cf327f2: Update README.md
+- e54bfbb: [Internal] better handling of the `hashnodeURL` input to verify that including `http` or `https` in the URL does not break the entire integration
+
 ## 0.1.5
 
 ### Patch Changes
