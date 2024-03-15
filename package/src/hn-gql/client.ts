@@ -6,13 +6,23 @@ export const getClient = () => {
   return new GraphQLClient("https://gql.hashnode.com") 
 }
 
+export function removeHTTPSProtocol(url: string) {
+  return url.replace(/^https?:\/\//, '');
+}
+export function removeHTTPProtocol(url: string) {
+  const fixHTTPS = removeHTTPSProtocol(url);
+  return fixHTTPS.replace(/^http?:\/\//, '');
+}
+
+const newURL = removeHTTPProtocol(config.hashnodeURL);
+
 export const getAllPosts = async () => {
   const client = getClient();
 
   const allPosts = await client.request<AllPostsData>(
     gql`
       query allPosts {
-        publication(host: "${config.hashnodeURL}") {
+        publication(host: "${newURL}") {
           title
           posts(first: 20) {
             pageInfo{
@@ -56,7 +66,7 @@ export const getPost = async (slug: string) => {
   const data = await client.request<PostOrPageData>(
     gql`
       query postDetails($slug: String!) {
-        publication(host: "${config.hashnodeURL}") {
+        publication(host: "${newURL}") {
           post(slug: $slug) {
             author{
               name
@@ -92,7 +102,7 @@ export const getAboutPage = async () => {
   const page = await client.request<PostOrPageData>(
     gql`
       query pageData {
-        publication(host: "${config.hashnodeURL}") {
+        publication(host: "${newURL}") {
           staticPage(slug: "about") {
             title
             content {
@@ -114,7 +124,7 @@ export const getPublication = async () => {
   const data = await client.request<PublicationData>(
     gql`
       query pubData {
-        publication(host: "${config.hashnodeURL}") {
+        publication(host: "${newURL}") {
           title
           displayTitle
           descriptionSEO

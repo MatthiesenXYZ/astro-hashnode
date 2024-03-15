@@ -10,7 +10,7 @@ export default defineConfig({
 	// }),
 	integrations: [
 		astroHashnode({
-			hashnodeURL: "astroplayground.hashnode.dev",
+			hashnodeURL: "https://astroplayground.hashnode.dev",
 			verbose: true,
 			disableViewTransitions: false,
 		})
