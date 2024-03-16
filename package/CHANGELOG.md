@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-hashnode
 
+## 0.1.7
+
+### Patch Changes
+
+- 6464de2: [fix] add extra fallback option for ogImage
+
 ## 0.1.6
 
 ### Patch Changes
