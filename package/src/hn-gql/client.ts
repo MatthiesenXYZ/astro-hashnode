@@ -129,6 +129,9 @@ export const getPublication = async () => {
           displayTitle
           descriptionSEO
           favicon
+          author {
+            profilePicture
+          }
           preferences {
             logo
             disableFooterBranding

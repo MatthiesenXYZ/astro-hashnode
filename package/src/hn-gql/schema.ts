@@ -60,6 +60,9 @@ export const PublicationDataSchema = z.object({
         displayTitle: z.string(),
         descriptionSEO: z.string(),
         favicon: z.string(),
+        author: z.object({
+            profilePicture: z.string(),
+        }),
         preferences: z.object({
             logo: z.string(),
             disableFooterBranding: z.boolean(),
