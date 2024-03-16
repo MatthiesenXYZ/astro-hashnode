@@ -41,7 +41,7 @@ const { pageTitle, hideFooter, hideHeader, ogImage } = Astro.props as AstroHashn
         basic: {
           title: pageTitle ? pageTitle + " | " + pubHeader : pubHeader,
           type: 'text',
-          image: ogImage || pubData.favicon,
+          image: ogImage || pubData.favicon || pubData.author.profilePicture,
         },
         optional: {
           description: pubData.descriptionSEO,
