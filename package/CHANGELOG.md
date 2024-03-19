@@ -1,5 +1,17 @@
 # @matthiesenxyz/astro-hashnode
 
+## 0.1.8
+
+### Patch Changes
+
+- 6ccd6dc: Bump dependencies:
+
+  - @tailwindcss/vite from to
+  - astro-font from to
+  - tailwindcss from to
+  - @astrojs/node from to
+  - astro from to
+
 ## 0.1.7
 
 ### Patch Changes
