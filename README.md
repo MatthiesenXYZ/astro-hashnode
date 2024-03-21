@@ -31,4 +31,6 @@ You can now edit files in `package`. Please note that making changes to those fi
 
 [MIT Licensed](./LICENSE). Made with ❤️ by [Adam M.](https://github.com/adammatthiesen).
 
+This project is cloned to [Gitea](https://git.matthiesen.dev)
+
 This project is also cloned to [GitLab](https://gitlab.com/matthiesenxyz/astro-hashnode)
