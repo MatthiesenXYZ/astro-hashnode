@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-hashnode
 
+## 0.1.9
+
+### Patch Changes
+
+- 56ce8e3: set AIK to only be able to auto-upgrade to latest minior
+
 ## 0.1.8
 
 ### Patch Changes
