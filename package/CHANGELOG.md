@@ -1,5 +1,16 @@
 # @matthiesenxyz/astro-hashnode
 
+## 0.1.10
+
+### Patch Changes
+
+- 85e272e: Bump dependencies:
+
+  - @tailwindcss/vite from to
+  - tailwindcss from to
+  - @astrojs/node from to
+  - astro from to
+
 ## 0.1.9
 
 ### Patch Changes
