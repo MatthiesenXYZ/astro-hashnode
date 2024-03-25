@@ -44,7 +44,7 @@
     "vite": "^5.2.6"
   },
   "dependencies": {
-    "@tailwindcss/vite": "4.0.0-alpha.9",
+    "@tailwindcss/vite": "4.0.0-alpha.10",
     "astro-font": "^0.0.78",
     "astro-integration-kit": "~0.7.1",
     "astro-remote": "^0.3.2",
@@ -52,7 +52,7 @@
     "graphql": "^16.8.1",
     "graphql-request": "^6.1.0",
     "picocolors": "^1.0.0",
-    "tailwindcss": "4.0.0-alpha.9",
+    "tailwindcss": "4.0.0-alpha.10",
     "ultrahtml": "^1.5.3"
   }
 }
