@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-hashnode
 
+## 0.1.11
+
+### Patch Changes
+
+- 87777a6: [internal] Upgrade AIK from 0.7.0 to 0.8.0
+
 ## 0.1.10
 
 ### Patch Changes
