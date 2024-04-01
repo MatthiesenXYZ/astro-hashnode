@@ -1,41 +1,30 @@
-import { createResolver, defineIntegration } from "astro-integration-kit";
-import { addDtsPlugin, corePlugins } from "astro-integration-kit/plugins";
+import { addDts, addVirtualImports, addVitePlugin, createResolver, defineIntegration } from "astro-integration-kit";
 import tailwindcss from "@tailwindcss/vite";
 import { optionsSchema } from "./schemas/user-config";
 import c from "picocolors";
 import { AstroError } from "astro/errors";
-import { readFileSync } from "node:fs";
 import { squooshImageService } from "astro/config";
+import { fileFactory } from "./utils/filefactory";
 
 /**
  * Astro-Hashnode Integration
  */
 export default defineIntegration({
-    name: "@matthiesenxyz/astro-hashnode",
+    name: "astro-hashnode",
     optionsSchema,
-    plugins: [ ...corePlugins, addDtsPlugin ],
-    setup({ options }) {
+    setup({ name, options }) {
         type outputType = "static" | "hybrid" | "server";
 
         return {
-            "astro:config:setup": ({ 
-                watchIntegration, 
-                addVitePlugin,
-                addVirtualImports,
-                addDts,
-                injectScript,
-                injectRoute, 
-                updateConfig,
-                config,
-                logger,
-            }) => {
+            "astro:config:setup": ( params ) => {
+
+                const { config, logger, injectScript, updateConfig, injectRoute } = params;
+
                 logger.info("Initializing...")
                 // Create Resolvers
                 const { resolve } = createResolver(import.meta.url);
                 const { resolve: rootResolve} = createResolver(config.root.pathname)
                 
-                // Watch Integration for changes in DEV
-                watchIntegration(resolve())
 
                 const HashLogger = logger.fork(c.bold(c.blue("Astro-Hashnode")));
                 const hashLogNoVerbose = (message:string) => {
@@ -78,22 +67,33 @@ export default defineIntegration({
                     layoutComponentPath = resolve('./layouts/Layout.astro')
                 }
 
-                addVirtualImports({
+                addVirtualImports(params, {name, imports: {
                     'virtual:astro-hashnode/config': `export default ${JSON.stringify(options) }`,
                     'virtual:astro-hashnode/components': `export { default as Layout } from "${layoutComponentPath}";`,
-                })
+                }})
 
-                addDts({
-                    name: 'astro-hashnode',
-                    content: readFileSync(resolve("./definitions/astro-hashnode.d.ts"), "utf-8"),
+                const hashnodeDTS = fileFactory()
+
+                hashnodeDTS.addLines(`
+                    declare module 'virtual:astro-hashnode/config' {
+                        const Config: import("${resolve("./schemas/user-config")}").Options;
+                        export default Config;
+                    }
+                    declare module 'virtual:astro-hashnode/components' {
+                        export const Layout: typeof import("${layoutComponentPath}").default
+                    }
+                `)
+
+                addDts(params, {
+                    name,
+                    content: hashnodeDTS.text(),
                 })
 
                 // Add & Setup Tailwind CSS
                 hashLog("Setting up 'Tailwind CSS v4' Integration")
-                const twplugin = tailwindcss();
-                for (const twp of twplugin) {
-                    addVitePlugin(twp);
-                }
+                addVitePlugin(params, { plugin: tailwindcss() });
+
+                // Inject CSS
                 injectScript(
                     "page-ssr", 
                     `import "${resolve("./styles/tailwind.css")}";`
