@@ -1,5 +1,11 @@
 # @matthiesenxyz/astro-hashnode
 
+## 0.1.12
+
+### Patch Changes
+
+- 0d3d0ff: fix tailwind
+
 ## 0.1.11
 
 ### Patch Changes
