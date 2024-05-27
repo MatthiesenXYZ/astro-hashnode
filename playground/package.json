@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/node": "8.2.5",
     "@matthiesenxyz/astro-hashnode": "workspace:*",
-    "astro": "^4.5.12"
+    "astro": "^4.9.1"
   },
   "devDependencies": {
     "@astrojs/check": "^0.5.10",
