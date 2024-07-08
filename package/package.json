@@ -47,15 +47,15 @@
     "vite": "^5.2.7"
   },
   "dependencies": {
-    "@tailwindcss/vite": "4.0.0-alpha.10",
-    "astro-font": "^0.0.78",
-    "astro-integration-kit": "^0.8.0",
-    "astro-remote": "^0.3.2",
-    "astro-seo": "^0.8.3",
-    "graphql": "^16.8.1",
-    "graphql-request": "^6.1.0",
-    "picocolors": "^1.0.0",
-    "tailwindcss": "4.0.0-alpha.10",
+    "@tailwindcss/vite": "4.0.0-alpha.17",
+    "astro-font": "^0.0.81",
+    "astro-integration-kit": "^0.14.0",
+    "astro-remote": "^0.3.3",
+    "astro-seo": "^0.8.4",
+    "graphql": "^16.9.0",
+    "graphql-request": "^7.1.0",
+    "picocolors": "^1.0.1",
+    "tailwindcss": "4.0.0-alpha.17",
     "ultrahtml": "^1.5.3"
   }
 }
